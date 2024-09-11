@@ -27,17 +27,17 @@ body {
   outline: black solid 2px;
 }
 
-#buttonGrid {
+#btnGrid {
   display: flex;
   flex-direction: column;
 }
 
-.buttonRow {
+.btnRow {
   display: flex;
   justify-content: center;
 }
 
-.button {
+.btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,12 +47,12 @@ body {
   width: 50px;
 }
 
-.buttonRowTop {
+.btnRowTop {
   justify-content: space-around;
   margin-bottom: 20px;
   margin-top: 20px;
 }
 
-.buttonRowTop>.button {
+.btnRowTop>.btn {
   width: 40%;
 }
