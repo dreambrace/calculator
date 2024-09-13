@@ -32,3 +32,11 @@ function operate(operator, num1, num2) {
       return "invalid operator";
   }
 }
+function getPressedButtonValue() {
+  const buttonGrid = document.querySelector("#btnGrid");
+  buttonGrid.addEventListener("mousedown", (event) => {
+    console.log(event.target.textContent);
+  });
+}
+
+getPressedButtonValue();
