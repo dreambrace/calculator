@@ -51,26 +51,43 @@ function UpdateDisplay() {
 function handlePressedButton() {
   const buttonGrid = document.querySelector("#btnGrid");
 
-  const inputTypeHandler = {
+  const inputActionsByType = {
     num: (button) => {
+      resetIfZero();
+
       displayValue += button.textContent;
+      UpdateDisplay();
       console.log(displayValue);
     },
-    operator: () => console.log("operator"),
-    clear: () => console.log("clear"),
-    delete: () => console.log("delete")
+    operator: () => {
+      console.log("operator")
+    },
+    equals: () => {
+      console.log("equals")
+    },
+    clear: () => {
+      console.log("clear")
+    },
+    delete: () => {
+      console.log("delete")
+    },
+    decimal: () => {
+      console.log("decimal")
+    }
   }
 
   buttonGrid.addEventListener("mousedown", (event) => {
     const target = event.target;
 
-    for (const type in inputTypeHandler) {
+    for (const type in inputActionsByType) {
       if (target.classList.contains(type)) {
-        inputTypeHandler[type](target);
+        inputActionsByType[type](target);
+        break;
       }
     }
   });
 }
+
 
 handlePressedButton();
 initializeDisplay();
