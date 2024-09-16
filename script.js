@@ -34,6 +34,20 @@ function operate(operator, num1, num2) {
   }
 }
 
+function resetIfZero() {
+  if (displayValue == 0) displayValue = "";
+}
+
+function initializeDisplay() {
+  const display = document.querySelector("#display");
+  display.textContent = 0;
+}
+
+function UpdateDisplay() {
+  const display = document.querySelector("#display");
+  display.textContent = displayValue;
+}
+
 function handlePressedButton() {
   const buttonGrid = document.querySelector("#btnGrid");
 
@@ -59,3 +73,4 @@ function handlePressedButton() {
 }
 
 handlePressedButton();
+initializeDisplay();
