@@ -1,6 +1,7 @@
 let firstNumber;
 let operator;
 let secondNumber;
+let displayValue = 0;
 
 function add(num1, num2) {
   return num1 + num2;
@@ -32,11 +33,29 @@ function operate(operator, num1, num2) {
       return "invalid operator";
   }
 }
-function getPressedButtonValue() {
+
+function handlePressedButton() {
   const buttonGrid = document.querySelector("#btnGrid");
+
+  const inputTypeHandler = {
+    num: (button) => {
+      displayValue += button.textContent;
+      console.log(displayValue);
+    },
+    operator: () => console.log("operator"),
+    clear: () => console.log("clear"),
+    delete: () => console.log("delete")
+  }
+
   buttonGrid.addEventListener("mousedown", (event) => {
-    console.log(event.target.textContent);
+    const target = event.target;
+
+    for (const type in inputTypeHandler) {
+      if (target.classList.contains(type)) {
+        inputTypeHandler[type](target);
+      }
+    }
   });
 }
 
-getPressedButtonValue();
+handlePressedButton();
