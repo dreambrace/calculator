@@ -5,6 +5,8 @@ let displayValue = 0;
 // Flag to indicate if the display should be cleared for the next input
 let clearDisplayNext = false;
 
+// Helper functions
+
 function add(num1, num2) {
   return num1 + num2;
 }
@@ -49,6 +51,7 @@ function isNull(value) {
   return value === null;
 }
 
+// Functions for handling different button types
 
 function handleNumberInput(button) {
   resetIfZero();
@@ -111,6 +114,7 @@ function handleDecimalInput() {
   console.log("decimal")
 }
 
+// Main event listener function
 function handlePressedButton() {
   const buttonGrid = document.querySelector("#btnGrid");
 
