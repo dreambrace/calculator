@@ -98,7 +98,18 @@ function handleOperatorInput(button) {
 }
 
 function handleEqualsInput() {
-  console.log("equals")
+  if (isNull(operator)) {
+    return;
+  }
+
+  if (isNull(secondNumber)) {
+    secondNumber = parseDisplay();
+  }
+
+  displayValue = operate(operator, firstNumber, secondNumber);
+  firstNumber = parseDisplay();
+
+  UpdateDisplay();
 }
 
 function handleClearInput() {
