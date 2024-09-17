@@ -78,15 +78,15 @@ function handlePressedButton() {
       // Update numbers
       if (isNull(firstNumber)) {
         firstNumber = parseInt(displayValue);
-        clearDisplayNext = true;
       } else if (isNull(secondNumber)) {
         secondNumber = parseInt(displayValue);
         displayValue = operate(operator, firstNumber, secondNumber);
         firstNumber = displayValue;
         secondNumber = null;
-        clearDisplayNext = true;
         UpdateDisplay();
       }
+
+      clearDisplayNext = true;
     },
     equals: () => {
       console.log("equals")
