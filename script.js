@@ -2,7 +2,7 @@ let firstNumber = null;
 let operator = null;
 let secondNumber = null;
 let displayValue = 0;
-// Flag to indicate if the display should be cleared for the next number input
+// Flag to indicate if the display should be cleared for the next input
 let clearDisplayNext = false;
 
 function add(num1, num2) {
@@ -75,15 +75,18 @@ function handlePressedButton() {
         operator = "multiply";
       }
 
-      // Update numbers
+      // Update numbers based on current state
       if (isNull(firstNumber)) {
+        // Set the first operand
         firstNumber = parseInt(displayValue);
       } else if (isNull(secondNumber)) {
+        // Set the second operand, perform the operation, and update the display
         secondNumber = parseInt(displayValue);
         displayValue = operate(operator, firstNumber, secondNumber);
+        UpdateDisplay();
+        // Prepare for the next input
         firstNumber = displayValue;
         secondNumber = null;
-        UpdateDisplay();
       }
 
       clearDisplayNext = true;
