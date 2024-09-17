@@ -49,65 +49,78 @@ function isNull(value) {
   return value === null;
 }
 
+
+function handleNumberInput(button) {
+  resetIfZero();
+
+  if (clearDisplayNext) {
+    displayValue = "";
+    clearDisplayNext = false;
+  }
+
+  displayValue += button.textContent;
+  UpdateDisplay();
+}
+
+function handleOperatorInput(button) {
+  if (button.classList.contains("add")) {
+    operator = "add";
+  } else if (button.classList.contains("subtract")) {
+    operator = "subtract";
+  } else if (button.classList.contains("divide")) {
+    operator = "divide";
+  } else if (button.classList.contains("multiply")) {
+    operator = "multiply";
+  }
+
+  // Update numbers based on current state
+  if (isNull(firstNumber)) {
+    // Set the first operand
+    firstNumber = parseInt(displayValue);
+  } else if (isNull(secondNumber)) {
+    // Set the second operand, perform the operation, and update the display
+    secondNumber = parseInt(displayValue);
+    displayValue = operate(operator, firstNumber, secondNumber);
+    UpdateDisplay();
+    // Prepare for the next input
+    firstNumber = displayValue;
+    secondNumber = null;
+  }
+
+  clearDisplayNext = true;
+}
+
+function handleEqualsInput() {
+  console.log("equals")
+}
+
+function handleClearInput() {
+  displayValue = "0";
+  firstNumber = null;
+  secondNumber = null;
+  operator = null;
+  clearDisplayNext = false;
+  UpdateDisplay();
+}
+
+function handleDeleteInput() {
+  console.log("delete")
+}
+
+function handleDecimalInput() {
+  console.log("decimal")
+}
+
 function handlePressedButton() {
   const buttonGrid = document.querySelector("#btnGrid");
 
   const inputActionsByType = {
-    num: (button) => {
-      resetIfZero();
-
-      if (clearDisplayNext) {
-        displayValue = "";
-        clearDisplayNext = false;
-      }
-
-      displayValue += button.textContent;
-      UpdateDisplay();
-    },
-    operator: (button) => {
-      if (button.classList.contains("add")) {
-        operator = "add";
-      } else if (button.classList.contains("subtract")) {
-        operator = "subtract";
-      } else if (button.classList.contains("divide")) {
-        operator = "divide";
-      } else if (button.classList.contains("multiply")) {
-        operator = "multiply";
-      }
-
-      // Update numbers based on current state
-      if (isNull(firstNumber)) {
-        // Set the first operand
-        firstNumber = parseInt(displayValue);
-      } else if (isNull(secondNumber)) {
-        // Set the second operand, perform the operation, and update the display
-        secondNumber = parseInt(displayValue);
-        displayValue = operate(operator, firstNumber, secondNumber);
-        UpdateDisplay();
-        // Prepare for the next input
-        firstNumber = displayValue;
-        secondNumber = null;
-      }
-
-      clearDisplayNext = true;
-    },
-    equals: () => {
-      console.log("equals")
-    },
-    clear: () => {
-      displayValue = "0";
-      firstNumber = null;
-      secondNumber = null;
-      operator = null;
-      clearDisplayNext = false;
-      UpdateDisplay();
-    },
-    delete: () => {
-      console.log("delete")
-    },
-    decimal: () => {
-      console.log("decimal")
-    }
+    num: handleNumberInput,
+    operator: handleOperatorInput,
+    equals: handleEqualsInput,
+    clear: handleClearInput,
+    delete: handleDeleteInput,
+    decimal: handleDecimalInput,
   }
 
   buttonGrid.addEventListener("mousedown", (event) => {
