@@ -92,7 +92,12 @@ function handlePressedButton() {
       console.log("equals")
     },
     clear: () => {
-      console.log("clear")
+      displayValue = "0";
+      firstNumber = null;
+      secondNumber = null;
+      operator = null;
+      clearDisplayNext = false;
+      UpdateDisplay();
     },
     delete: () => {
       console.log("delete")
