@@ -1,7 +1,9 @@
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = null;
+let operator = null;
+let secondNumber = null;
 let displayValue = 0;
+// Flag to indicate if the display should be cleared for the next number input
+let clearDisplayNext = false;
 
 function add(num1, num2) {
   return num1 + num2;
@@ -43,6 +45,10 @@ function UpdateDisplay() {
   display.textContent = displayValue;
 }
 
+function isNull(value) {
+  return value === null;
+}
+
 function handlePressedButton() {
   const buttonGrid = document.querySelector("#btnGrid");
 
@@ -50,12 +56,37 @@ function handlePressedButton() {
     num: (button) => {
       resetIfZero();
 
+      if (clearDisplayNext) {
+        displayValue = "";
+        clearDisplayNext = false;
+      }
+
       displayValue += button.textContent;
       UpdateDisplay();
-      console.log(displayValue);
     },
-    operator: () => {
-      console.log("operator")
+    operator: (button) => {
+      if (button.classList.contains("add")) {
+        operator = "add";
+      } else if (button.classList.contains("subtract")) {
+        operator = "subtract";
+      } else if (button.classList.contains("divide")) {
+        operator = "divide";
+      } else if (button.classList.contains("multiply")) {
+        operator = "multiply";
+      }
+
+      // Update numbers
+      if (isNull(firstNumber)) {
+        firstNumber = parseInt(displayValue);
+        clearDisplayNext = true;
+      } else if (isNull(secondNumber)) {
+        secondNumber = parseInt(displayValue);
+        displayValue = operate(operator, firstNumber, secondNumber);
+        firstNumber = displayValue;
+        secondNumber = null;
+        clearDisplayNext = true;
+        UpdateDisplay();
+      }
     },
     equals: () => {
       console.log("equals")
