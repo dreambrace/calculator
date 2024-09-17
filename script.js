@@ -51,6 +51,10 @@ function isNull(value) {
   return value === null;
 }
 
+function parseDisplay() {
+  return parseInt(displayValue);
+}
+
 // Functions for handling different button types
 
 function handleNumberInput(button) {
@@ -79,10 +83,10 @@ function handleOperatorInput(button) {
   // Update numbers based on current state
   if (isNull(firstNumber)) {
     // Set the first operand
-    firstNumber = parseInt(displayValue);
+    firstNumber = parseDisplay();
   } else if (isNull(secondNumber)) {
     // Set the second operand, perform the operation, and update the display
-    secondNumber = parseInt(displayValue);
+    secondNumber = parseDisplay();
     displayValue = operate(operator, firstNumber, secondNumber);
     UpdateDisplay();
     // Prepare for the next input
