@@ -55,6 +55,22 @@ function handleNumberInput(button) {
 }
 
 function handleOperatorInput(button) {
+  if (isNull(firstNumber)) {
+    firstNumber = parseDisplay();
+
+  } else if (isNull(secondNumber)) {
+    secondNumber = parseDisplay();
+    result = operate(operator, firstNumber, secondNumber);
+    displayValue = result;
+    UpdateDisplay();
+
+  } else {
+    firstNumber = result;
+    secondNumber = parseDisplay();
+    result = operate(operator, firstNumber, secondNumber);
+    displayValue = result;
+    UpdateDisplay();
+  }
   if (button.classList.contains("add")) {
     operator = "add";
   } else if (button.classList.contains("subtract")) {
@@ -63,20 +79,6 @@ function handleOperatorInput(button) {
     operator = "divide";
   } else if (button.classList.contains("multiply")) {
     operator = "multiply";
-  }
-
-  // Update numbers based on current state
-  if (isNull(firstNumber)) {
-    // Set the first operand
-    firstNumber = parseDisplay();
-  } else if (isNull(secondNumber)) {
-    // Set the second operand, perform the operation, and update the display
-    secondNumber = parseDisplay();
-    displayValue = operate(operator, firstNumber, secondNumber);
-    UpdateDisplay();
-    // Prepare for the next input
-    firstNumber = displayValue;
-    secondNumber = null;
   }
 
   clearDisplayNext = true;
