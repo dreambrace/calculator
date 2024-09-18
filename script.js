@@ -1,6 +1,7 @@
 let firstNumber = null;
 let operator = null;
 let secondNumber = null;
+let result = null;
 let displayValue = 0;
 // Flag to indicate if the display should be cleared for the next input
 let clearDisplayNext = false;
