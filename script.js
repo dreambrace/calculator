@@ -86,18 +86,24 @@ function handleOperatorInput(button) {
 }
 
 function handleEqualsInput() {
-  if (isNull(operator)) {
-    return;
-  }
+  if (isNull(firstNumber) || isNull(operator)) {
+    firstNumber = parseDisplay();
 
-  if (isNull(secondNumber)) {
+  } else if (isNull(secondNumber)) {
     secondNumber = parseDisplay();
+    result = operate(operator, firstNumber, secondNumber);
+    displayValue = result;
+    UpdateDisplay();
+    operator = null;
+
+  } else {
+    firstNumber = result;
+    secondNumber = parseDisplay();
+    result = operate(operator, firstNumber, secondNumber);
+    displayValue = result;
+    UpdateDisplay();
+    operator = null;
   }
-
-  displayValue = operate(operator, firstNumber, secondNumber);
-  firstNumber = parseDisplay();
-
-  UpdateDisplay();
 }
 
 function handleClearInput() {
