@@ -71,6 +71,7 @@ function handleOperatorInput(button) {
     displayValue = result;
     UpdateDisplay();
   }
+
   if (button.classList.contains("add")) {
     operator = "add";
   } else if (button.classList.contains("subtract")) {
