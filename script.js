@@ -23,7 +23,7 @@ function operate(operator, num1, num2) {
   }
 }
 
-function resetIfZero() {
+function clearDisplayIfZero() {
   if (displayValue == 0) displayValue = "";
 }
 
@@ -43,7 +43,7 @@ function parseDisplay() {
 // Functions for handling different button types
 
 function handleNumberInput(button) {
-  resetIfZero();
+  clearDisplayIfZero();
 
   if (clearDisplayNext) {
     displayValue = "";
