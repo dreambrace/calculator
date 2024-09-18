@@ -116,8 +116,9 @@ function handleEqualsInput() {
 function handleClearInput() {
   displayValue = "0";
   firstNumber = null;
-  secondNumber = null;
   operator = null;
+  secondNumber = null;
+  result = null;
   clearDisplayNext = false;
   UpdateDisplay();
 }
