@@ -119,9 +119,7 @@ function handleDecimalInput() {
 }
 
 // Main event listener function
-function handlePressedButton() {
-  const buttonGrid = document.querySelector("#btnGrid");
-
+function initializeInputHandling() {
   const inputActionsByType = {
     num: handleNumberInput,
     operator: handleOperatorInput,
@@ -129,7 +127,9 @@ function handlePressedButton() {
     clear: handleClearInput,
     delete: handleDeleteInput,
     decimal: handleDecimalInput,
-  }
+  };
+
+  const buttonGrid = document.querySelector("#btnGrid");
 
   buttonGrid.addEventListener("mousedown", (event) => {
     const target = event.target;
@@ -144,4 +144,4 @@ function handlePressedButton() {
 }
 
 
-handlePressedButton();
+initializeInputHandling();
