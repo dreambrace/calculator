@@ -27,7 +27,7 @@ function clearDisplayIfZero() {
   if (displayValue == 0) displayValue = "";
 }
 
-function UpdateDisplay() {
+function updateDisplay() {
   const display = document.querySelector("#display");
   display.textContent = displayValue;
 }
@@ -51,7 +51,7 @@ function handleNumberInput(button) {
   }
 
   displayValue += button.textContent;
-  UpdateDisplay();
+  updateDisplay();
 }
 
 function handleOperatorInput(button) {
@@ -62,14 +62,14 @@ function handleOperatorInput(button) {
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
     displayValue = result;
-    UpdateDisplay();
+    updateDisplay();
 
   } else {
     firstNumber = result;
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
     displayValue = result;
-    UpdateDisplay();
+    updateDisplay();
   }
 
   if (button.classList.contains("add")) {
@@ -93,7 +93,7 @@ function handleEqualsInput() {
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
     displayValue = result;
-    UpdateDisplay();
+    updateDisplay();
     operator = null;
 
   } else {
@@ -101,7 +101,7 @@ function handleEqualsInput() {
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
     displayValue = result;
-    UpdateDisplay();
+    updateDisplay();
     operator = null;
   }
 }
@@ -113,7 +113,7 @@ function handleClearInput() {
   secondNumber = null;
   result = null;
   clearDisplayNext = false;
-  UpdateDisplay();
+  updateDisplay();
 }
 
 function handleDeleteInput() {
