@@ -117,7 +117,8 @@ function handleClearInput() {
 }
 
 function handleDeleteInput() {
-  console.log("delete")
+  displayValue = 0;
+  updateDisplay();
 }
 
 function handleDecimalInput() {
