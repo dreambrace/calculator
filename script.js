@@ -37,7 +37,7 @@ function isNull(value) {
 }
 
 function parseDisplay() {
-  return parseInt(displayValue);
+  return parseFloat(displayValue);
 }
 
 // Functions for handling different button types
