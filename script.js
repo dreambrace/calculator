@@ -121,7 +121,14 @@ function handleDeleteInput() {
 }
 
 function handleDecimalInput() {
-  console.log("decimal")
+  let num = displayValue.toString();
+
+  if (num.includes(".")) {
+    return;
+  }
+
+  displayValue = num + ".";
+  updateDisplay();
 }
 
 // Main event listener function
