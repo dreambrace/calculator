@@ -94,7 +94,6 @@ function handleEqualsInput() {
     result = operate(operator, firstNumber, secondNumber);
     displayValue = result;
     updateDisplay();
-    operator = null;
 
   } else {
     firstNumber = result;
