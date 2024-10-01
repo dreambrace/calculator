@@ -40,6 +40,30 @@ function parseDisplay() {
   return parseFloat(displayValue);
 }
 
+function limitToEightDigitsMax(num) {
+  const digitGroups = num.toString().split(".");
+  const digitsBeforeDecimal = digitGroups[0];
+  const digitsAfterDecimal = digitGroups[1];
+
+  if (digitsBeforeDecimal.length > 8) {
+    return "too long to display";
+  }
+
+  if (digitsBeforeDecimal.length <= 8 &&
+    digitsAfterDecimal === undefined) {
+    return digitsBeforeDecimal;
+  }
+
+  else {
+    const availableDigits = 8 - digitsBeforeDecimal.length;
+    // "* 1" removes trailing zeros
+    const finalNumber = parseFloat(digitsBeforeDecimal + "." + digitsAfterDecimal)
+      .toFixed(availableDigits) * 1;
+
+    return finalNumber;
+  }
+}
+
 // Functions for handling different button types
 
 function handleNumberInput(button) {
