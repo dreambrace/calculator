@@ -157,7 +157,7 @@ function handleDecimalInput() {
 
 // Main event listener function
 function initializeInputHandling() {
-  const inputActionsByType = {
+  const buttonTypeHandlers = {
     num: handleNumberInput,
     operator: handleOperatorInput,
     equals: handleEqualsInput,
@@ -171,9 +171,9 @@ function initializeInputHandling() {
   buttonGrid.addEventListener("mousedown", (event) => {
     const target = event.target;
 
-    for (const type in inputActionsByType) {
+    for (const type in buttonTypeHandlers) {
       if (target.classList.contains(type)) {
-        inputActionsByType[type](target);
+        buttonTypeHandlers[type](target);
         break;
       }
     }
