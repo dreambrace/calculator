@@ -191,6 +191,44 @@ function initializeInputHandling() {
       }
     }
   });
+
+  // Keyboard input
+
+  document.addEventListener("keyup", (event) => {
+
+    const keymap = {
+      "0": () => handleNumberInput({ id: "0" }),
+      "1": () => handleNumberInput({ id: "1" }),
+      "2": () => handleNumberInput({ id: "2" }),
+      "3": () => handleNumberInput({ id: "3" }),
+      "4": () => handleNumberInput({ id: "4" }),
+      "5": () => handleNumberInput({ id: "5" }),
+      "6": () => handleNumberInput({ id: "6" }),
+      "7": () => handleNumberInput({ id: "7" }),
+      "8": () => handleNumberInput({ id: "8" }),
+      "9": () => handleNumberInput({ id: "9" }),
+
+      "+": () => handleOperatorInput({ id: "add" }),
+      "-": () => handleOperatorInput({ id: "subtract" }),
+      "*": () => handleOperatorInput({ id: "multiply" }),
+      "/": () => handleOperatorInput({ id: "divide" }),
+
+      "=": handleEqualsInput,
+      "Enter": handleEqualsInput,
+      " ": handleEqualsInput,
+
+      "Escape": handleClearInput,
+
+      "Backspace": handleDeleteInput,
+
+      ".": handleDecimalInput,
+    }
+
+    // If the pressed key is in the keymap, call the associated handler
+    if (keymap[event.key]) {
+      keymap[event.key]();
+    }
+  });
 }
 
 
