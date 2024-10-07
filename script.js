@@ -79,7 +79,7 @@ function handleNumberInput(button) {
     return;
   }
 
-  displayValue += button.textContent;
+  displayValue += button.id;
   updateDisplay();
 }
 
@@ -105,13 +105,13 @@ function handleOperatorInput(button) {
     operator = null;
   }
 
-  if (button.classList.contains("add")) {
+  if (button.id === "add") {
     operator = "add";
-  } else if (button.classList.contains("subtract")) {
+  } else if (button.id === "subtract") {
     operator = "subtract";
-  } else if (button.classList.contains("divide")) {
+  } else if (button.id === "divide") {
     operator = "divide";
-  } else if (button.classList.contains("multiply")) {
+  } else if (button.id === "multiply") {
     operator = "multiply";
   }
 
