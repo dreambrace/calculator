@@ -91,13 +91,9 @@ function handleOperatorInput(button) {
     result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
     displayValue = result;
     updateDisplay();
-
-  } else {
     firstNumber = result;
-    secondNumber = parseDisplay();
-    result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
-    displayValue = result;
-    updateDisplay();
+    secondNumber = null;
+    operator = null;
   }
 
   if (button.classList.contains("add")) {
