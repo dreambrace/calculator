@@ -74,6 +74,10 @@ function handleNumberInput(button) {
     clearDisplayNext = false;
   }
 
+  if (displayValue.toString().length > 8) {
+    return;
+  }
+
   displayValue += button.textContent;
   updateDisplay();
 }
