@@ -89,9 +89,16 @@ function handleOperatorInput(button) {
 
   } else if (isNull(secondNumber)) {
     secondNumber = parseDisplay();
-    result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
-    displayValue = result;
-    updateDisplay();
+
+    if (secondNumber === 0 && operator === "divide") {
+      displayValue = "Yeah, no."
+      updateDisplay();
+      result = NaN;
+    } else {
+      result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
+      displayValue = result;
+      updateDisplay();
+    }
 
     firstNumber = result;
     secondNumber = null;
@@ -117,9 +124,16 @@ function handleEqualsInput() {
 
   } else if (isNull(secondNumber)) {
     secondNumber = parseDisplay();
-    result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
-    displayValue = result;
-    updateDisplay();
+
+    if (secondNumber === 0 && operator === "divide") {
+      displayValue = "Yeah, no."
+      updateDisplay();
+      result = NaN;
+    } else {
+      result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
+      displayValue = result;
+      updateDisplay();
+    }
 
     firstNumber = null;
     secondNumber = null;
