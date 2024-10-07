@@ -89,14 +89,14 @@ function handleOperatorInput(button) {
   } else if (isNull(secondNumber)) {
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
-    displayValue = result;
+    displayValue = limitToEightDigitsMax(result);
     updateDisplay();
 
   } else {
     firstNumber = result;
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
-    displayValue = result;
+    displayValue = limitToEightDigitsMax(result);
     updateDisplay();
   }
 
@@ -120,14 +120,14 @@ function handleEqualsInput() {
   } else if (isNull(secondNumber)) {
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
-    displayValue = result;
+    displayValue = limitToEightDigitsMax(result);
     updateDisplay();
 
   } else {
     firstNumber = result;
     secondNumber = parseDisplay();
     result = operate(operator, firstNumber, secondNumber);
-    displayValue = result;
+    displayValue = limitToEightDigitsMax(result);
     updateDisplay();
     operator = null;
   }
