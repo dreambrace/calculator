@@ -24,7 +24,7 @@ function operate(operator, num1, num2) {
 }
 
 function clearDisplayIfZero() {
-  if (displayValue == 0) displayValue = "";
+  if (displayValue.toString() === "0") displayValue = "";
 }
 
 function updateDisplay() {
