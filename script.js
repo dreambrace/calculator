@@ -51,7 +51,8 @@ function limitToEightDigitsMax(num) {
 
   if (digitsBeforeDecimal.length <= 8 &&
     digitsAfterDecimal === undefined) {
-    return digitsBeforeDecimal;
+    const finalNumber = parseFloat(digitsBeforeDecimal);
+    return finalNumber;
   }
 
   else {
