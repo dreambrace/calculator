@@ -170,6 +170,9 @@ function handleDecimalInput() {
 
 // Main event listener function
 function initializeInputHandling() {
+
+  // Mouse input
+
   const buttonTypeHandlers = {
     num: handleNumberInput,
     operator: handleOperatorInput,
@@ -184,6 +187,7 @@ function initializeInputHandling() {
   buttonGrid.addEventListener("mousedown", (event) => {
     const target = event.target;
 
+    // Loop through the types of buttons in buttonTypeHandlers and check if the clicked button has a matching class. If it does, call the associated handler and exit loop
     for (const type in buttonTypeHandlers) {
       if (target.classList.contains(type)) {
         buttonTypeHandlers[type](target);
