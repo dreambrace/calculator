@@ -104,16 +104,7 @@ function handleOperatorInput(button) {
     secondNumber = null;
   }
 
-  if (button.id === "add") {
-    operator = "add";
-  } else if (button.id === "subtract") {
-    operator = "subtract";
-  } else if (button.id === "divide") {
-    operator = "divide";
-  } else if (button.id === "multiply") {
-    operator = "multiply";
-  }
-
+  operator = button.id;
   clearDisplayNext = true;
 }
 
