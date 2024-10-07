@@ -92,6 +92,7 @@ function handleOperatorInput(button) {
     result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
     displayValue = result;
     updateDisplay();
+
     firstNumber = result;
     secondNumber = null;
     operator = null;
@@ -119,6 +120,7 @@ function handleEqualsInput() {
     result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
     displayValue = result;
     updateDisplay();
+
     firstNumber = null;
     secondNumber = null;
     operator = null;
