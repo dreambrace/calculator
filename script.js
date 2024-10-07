@@ -102,7 +102,6 @@ function handleOperatorInput(button) {
 
     firstNumber = result;
     secondNumber = null;
-    operator = null;
   }
 
   if (button.id === "add") {
