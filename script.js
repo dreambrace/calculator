@@ -122,14 +122,10 @@ function handleEqualsInput() {
     result = operate(operator, firstNumber, secondNumber);
     displayValue = limitToEightDigitsMax(result);
     updateDisplay();
-
-  } else {
-    firstNumber = result;
-    secondNumber = parseDisplay();
-    result = operate(operator, firstNumber, secondNumber);
-    displayValue = limitToEightDigitsMax(result);
-    updateDisplay();
+    firstNumber = null;
+    secondNumber = null;
     operator = null;
+    clearDisplayNext = true;
   }
 }
 
