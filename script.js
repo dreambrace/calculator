@@ -3,10 +3,9 @@ let operator = null;
 let secondNumber = null;
 let result = null;
 let displayValue = 0;
-// Flag to indicate if the display should be cleared for the next input
-let clearDisplayNext = false;
-// Flag to verify a display value isn't being assigned multiple times. Starts as true so you can calculate with the starting zero.
-let isNewNumberEntered = true;
+// Flag to prevent the display value from being assigned multiple times on subsequent operator and equals inputs.
+// Starts as false so you can calculate with the starting zero.
+let isExpectingNewNumber = false;
 
 // Helper functions
 
@@ -83,7 +82,7 @@ function handleDividingByZero() {
 function handleNumberInput(button) {
   clearDisplayIfZero();
 
-  if (clearDisplayNext) {
+  if (isExpectingNewNumber) {
     displayValue = "";
   }
 
@@ -92,8 +91,7 @@ function handleNumberInput(button) {
   }
 
   displayValue += button.id;
-  clearDisplayNext = false;
-  isNewNumberEntered = true;
+  isExpectingNewNumber = false;
   updateDisplay();
 }
 
@@ -101,12 +99,11 @@ function handleOperatorInput(button) {
   if (isNull(firstNumber)) {
     firstNumber = parseDisplay();
     operator = button.id;
-    clearDisplayNext = true;
-    isNewNumberEntered = false;
+    isExpectingNewNumber = true;
     return;
   }
 
-  if (!isNewNumberEntered) {
+  if (isExpectingNewNumber) {
     operator = button.id;
     return;
   }
@@ -123,8 +120,7 @@ function handleOperatorInput(button) {
   updateDisplay();
   firstNumber = result;
   operator = button.id;
-  clearDisplayNext = true;
-  isNewNumberEntered = false;
+  isExpectingNewNumber = true;
 }
 
 function handleEqualsInput() {
@@ -132,7 +128,7 @@ function handleEqualsInput() {
     return;
   }
 
-  if (isNull(secondNumber) || isNewNumberEntered) {
+  if (isNull(secondNumber) || !isExpectingNewNumber) {
     secondNumber = parseDisplay();
   }
 
@@ -145,8 +141,7 @@ function handleEqualsInput() {
   displayValue = result;
   updateDisplay();
   firstNumber = result;
-  clearDisplayNext = true;
-  isNewNumberEntered = false;
+  isExpectingNewNumber = true;
 }
 
 function handleClearInput() {
@@ -155,7 +150,7 @@ function handleClearInput() {
   operator = null;
   secondNumber = null;
   result = null;
-  clearDisplayNext = false;
+  isExpectingNewNumber = false;
   updateDisplay();
 }
 
