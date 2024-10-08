@@ -5,6 +5,8 @@ let result = null;
 let displayValue = 0;
 // Flag to indicate if the display should be cleared for the next input
 let clearDisplayNext = false;
+// Flag to verify a display value isn't being assigned multiple times. Starts as true so you can calculate with the starting zero.
+let isNewNumberEntered = true;
 
 // Helper functions
 
@@ -65,6 +67,17 @@ function limitToEightDigitsMax(num) {
   }
 }
 
+function isDividingByZero() {
+  return secondNumber === 0 && operator === "divide";
+}
+
+function handleDividingByZero() {
+  displayValue = "Yeah, no."
+  updateDisplay();
+  displayValue = 0;
+  return;
+}
+
 // Functions for handling different button types
 
 function handleNumberInput(button) {
@@ -72,7 +85,6 @@ function handleNumberInput(button) {
 
   if (clearDisplayNext) {
     displayValue = "";
-    clearDisplayNext = false;
   }
 
   if (displayValue.toString().length > 8) {
@@ -80,56 +92,61 @@ function handleNumberInput(button) {
   }
 
   displayValue += button.id;
+  clearDisplayNext = false;
+  isNewNumberEntered = true;
   updateDisplay();
 }
 
 function handleOperatorInput(button) {
   if (isNull(firstNumber)) {
     firstNumber = parseDisplay();
-
-  } else if (isNull(secondNumber)) {
-    secondNumber = parseDisplay();
-
-    if (secondNumber === 0 && operator === "divide") {
-      displayValue = "Yeah, no."
-      updateDisplay();
-      result = NaN;
-    } else {
-      result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
-      displayValue = result;
-      updateDisplay();
-    }
-
-    firstNumber = result;
-    secondNumber = null;
+    operator = button.id;
+    clearDisplayNext = true;
+    isNewNumberEntered = false;
+    return;
   }
 
+  if (!isNewNumberEntered) {
+    operator = button.id;
+    return;
+  }
+
+  secondNumber = parseDisplay();
+
+  if (isDividingByZero()) {
+    handleDividingByZero();
+    return;
+  }
+
+  result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
+  displayValue = result;
+  updateDisplay();
+  firstNumber = result;
   operator = button.id;
   clearDisplayNext = true;
+  isNewNumberEntered = false;
 }
 
 function handleEqualsInput() {
   if (isNull(firstNumber) || isNull(operator)) {
-    firstNumber = parseDisplay();
-
-  } else if (isNull(secondNumber)) {
-    secondNumber = parseDisplay();
-
-    if (secondNumber === 0 && operator === "divide") {
-      displayValue = "Yeah, no."
-      updateDisplay();
-      result = NaN;
-    } else {
-      result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
-      displayValue = result;
-      updateDisplay();
-    }
-
-    firstNumber = null;
-    secondNumber = null;
-    operator = null;
-    clearDisplayNext = true;
+    return;
   }
+
+  if (isNull(secondNumber) || isNewNumberEntered) {
+    secondNumber = parseDisplay();
+  }
+
+  if (isDividingByZero()) {
+    handleDividingByZero();
+    return;
+  }
+
+  result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
+  displayValue = result;
+  updateDisplay();
+  firstNumber = result;
+  clearDisplayNext = true;
+  isNewNumberEntered = false;
 }
 
 function handleClearInput() {
