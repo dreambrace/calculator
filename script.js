@@ -74,7 +74,7 @@ function initializeInputHandling() {
   });
 }
 
-// Functions for handling different button types
+// Input handler functions
 
 function handleNumberInput(button) {
   if (isErrorDisplayed) {
