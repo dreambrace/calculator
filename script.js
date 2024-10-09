@@ -1,7 +1,6 @@
 let firstNumber = null;
 let operator = null;
 let secondNumber = null;
-let result = null;
 let displayValue = 0;
 let isErrorDisplayed = false;
 // Flag to prevent the display value from being assigned multiple times on subsequent operator and equals inputs.
@@ -124,10 +123,9 @@ function handleOperatorInput(button) {
     return;
   }
 
-  result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
-  displayValue = result;
+  displayValue = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
   updateDisplay();
-  firstNumber = result;
+  firstNumber = displayValue;
   operator = button.id;
   isExpectingNewNumber = true;
 }
@@ -146,10 +144,9 @@ function handleEqualsInput() {
     return;
   }
 
-  result = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
-  displayValue = result;
+  displayValue = limitToEightDigitsMax(operate(operator, firstNumber, secondNumber));
   updateDisplay();
-  firstNumber = result;
+  firstNumber = displayValue;
   isExpectingNewNumber = true;
 }
 
@@ -158,7 +155,6 @@ function handleClearInput() {
   firstNumber = null;
   operator = null;
   secondNumber = null;
-  result = null;
   isErrorDisplayed = false;
   isExpectingNewNumber = false;
   updateDisplay();
