@@ -3,6 +3,7 @@ let operator = null;
 let secondNumber = null;
 let result = null;
 let displayValue = 0;
+let isErrorDisplayed = false;
 // Flag to prevent the display value from being assigned multiple times on subsequent operator and equals inputs.
 // Starts as false so you can calculate with the starting zero.
 let isExpectingNewNumber = false;
@@ -47,6 +48,7 @@ function limitToEightDigitsMax(num) {
   const digitsAfterDecimal = digitGroups[1];
 
   if (digitsBeforeDecimal.length > 8) {
+    isErrorDisplayed = true;
     return "too long to display";
   }
 
@@ -74,6 +76,7 @@ function handleDividingByZero() {
   displayValue = "Yeah, no."
   updateDisplay();
   displayValue = 0;
+  isErrorDisplayed = true;
   return;
 }
 
@@ -81,6 +84,9 @@ function handleDividingByZero() {
 
 function handleNumberInput(button) {
   clearDisplayIfZero();
+  if (isErrorDisplayed) {
+    return;
+  }
 
   if (isExpectingNewNumber) {
     displayValue = "";
@@ -96,6 +102,10 @@ function handleNumberInput(button) {
 }
 
 function handleOperatorInput(button) {
+  if (isErrorDisplayed) {
+    return;
+  }
+
   if (isNull(firstNumber)) {
     firstNumber = parseDisplay();
     operator = button.id;
@@ -124,7 +134,7 @@ function handleOperatorInput(button) {
 }
 
 function handleEqualsInput() {
-  if (isNull(firstNumber) || isNull(operator)) {
+  if (isErrorDisplayed || isNull(firstNumber) || isNull(operator)) {
     return;
   }
 
@@ -150,6 +160,7 @@ function handleClearInput() {
   operator = null;
   secondNumber = null;
   result = null;
+  isErrorDisplayed = false;
   isExpectingNewNumber = false;
   updateDisplay();
 }
