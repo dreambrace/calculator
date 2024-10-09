@@ -83,10 +83,11 @@ function handleDividingByZero() {
 // Functions for handling different button types
 
 function handleNumberInput(button) {
-  clearInitialZero();
   if (isErrorDisplayed) {
     return;
   }
+
+  clearInitialZero();
 
   if (isExpectingNewNumber) {
     displayValue = "";
