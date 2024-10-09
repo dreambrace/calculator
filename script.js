@@ -75,7 +75,6 @@ function isDividingByZero() {
 function handleDividingByZero() {
   displayValue = "Yeah, no."
   updateDisplay();
-  displayValue = 0;
   isErrorDisplayed = true;
   return;
 }
