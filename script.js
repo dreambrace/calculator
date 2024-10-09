@@ -24,8 +24,10 @@ function operate(operator, num1, num2) {
   }
 }
 
-function clearDisplayIfZero() {
-  if (displayValue.toString() === "0") displayValue = "";
+function clearInitialZero() {
+  if (displayValue.toString() === "0") {
+    displayValue = "";
+  }
 }
 
 function updateDisplay() {
@@ -81,7 +83,7 @@ function handleDividingByZero() {
 // Functions for handling different button types
 
 function handleNumberInput(button) {
-  clearDisplayIfZero();
+  clearInitialZero();
   if (isErrorDisplayed) {
     return;
   }
