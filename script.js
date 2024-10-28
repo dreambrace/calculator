@@ -10,8 +10,6 @@ let isExpectingNewNumber = false;
 // Main event listener function
 function initializeInputHandling() {
 
-  // Mouse input
-
   const buttonTypeHandlers = {
     num: handleNumberInput,
     operator: handleOperatorInput,
@@ -20,6 +18,8 @@ function initializeInputHandling() {
     delete: handleDeleteInput,
     decimal: handleDecimalInput,
   };
+
+  // Mouse input
 
   const buttonGrid = document.querySelector("#btnGrid");
 
