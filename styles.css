@@ -30,14 +30,14 @@ body {
   display: flex;
   justify-content: right;
   align-items: center;
-  height: 60px;
+  height: 50px;
   width: 190px;
   padding-right: 10px;
-  outline: 2px solid #282828;
-  border-radius: 15px;
   background-color: #fbf1c7;
-  font-size: 2.2em;
   color: #1d2021;
+  padding-top: 7px;
+  outline: 3px solid #282828;
+  border-radius: 5px;
   font-size: 2.4em;
   font-family: "Segment7Standard";
 }
