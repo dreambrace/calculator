@@ -163,6 +163,10 @@ function handleDeleteInput() {
 }
 
 function handleDecimalInput() {
+  if (displayValue.toString().length > 7) {
+    return;
+  }
+
   let num = displayValue.toString();
 
   if (num.includes(".")) {
