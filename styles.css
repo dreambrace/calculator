@@ -39,6 +39,17 @@ body {
   font-weight: bold;
   width: 250px;
   gap: 5px;
+
+  /* disable text selection with click-and-drag */
+  /* Safari */
+  -webkit-touch-callout: none;
+  /* Chrome */
+  -webkit-user-select: none;
+  /* Firefox */
+  -moz-user-select: none;
+  /* Internet Explorer/Edge */
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .btnRow {
