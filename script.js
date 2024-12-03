@@ -216,7 +216,7 @@ function limitToEightDigitsMax(num) {
 
   if (digitsBeforeDecimal.length > 8) {
     isErrorDisplayed = true;
-    return "too long to display";
+    return "Too long";
   }
 
   if (digitsBeforeDecimal.length <= 8 &&
