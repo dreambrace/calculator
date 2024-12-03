@@ -59,6 +59,11 @@ body {
   color: #ebdbb2;
 }
 
+.btn:active {
+  transform: scale(0.95);
+  background-color: #1d2021;
+}
+
 .btnRowTop {
   justify-content: center;
   gap: 10px;
