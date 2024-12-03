@@ -87,7 +87,7 @@ function handleNumberInput(button) {
     displayValue = "";
   }
 
-  if (displayValue.toString().length > 7) {
+  if (displayValue.toString().replace(".", "").length > 7) {
     return;
   }
 
