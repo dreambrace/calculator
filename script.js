@@ -244,7 +244,7 @@ function isDividingByZero() {
 }
 
 function handleDividingByZero() {
-  displayValue = "Yeah, no."
+  displayValue = "Nice try"
   updateDisplay();
   isErrorDisplayed = true;
   return;
