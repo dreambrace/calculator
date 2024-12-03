@@ -7,7 +7,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1d2021;
+  background-color: #fffcf6;
+  background-size: 28px 28px;
+  background-image: repeating-linear-gradient(0deg, #bbb3ad, #bbb3ad 1.4px, #fffcf6 1.4px, #fffcf6);
 }
 
 #calculator {
