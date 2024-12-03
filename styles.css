@@ -33,13 +33,13 @@ body {
   height: 50px;
   width: 190px;
   padding-right: 10px;
-  background-color: #fbf1c7;
-  color: #1d2021;
   padding-top: 7px;
   outline: 3px solid #282828;
   border-radius: 5px;
+  background-color: #1d2021;
   font-size: 2.4em;
   font-family: "Segment7Standard";
+  color: #cc241d;
 }
 
 #btnGrid {
@@ -98,9 +98,21 @@ body {
 }
 
 #clear {
-  color: #cc241d;
+  color: #98971a;
 }
 
 #delete {
+  color: #458588;
+}
+
+.operator {
   color: #d79921;
+}
+
+#equals {
+  color: #b16286;
+}
+
+#decimal {
+  color: #689d6a;
 }
